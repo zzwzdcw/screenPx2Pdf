@@ -33,7 +33,7 @@ def package_img():
     global total
     # 创建一个空列表，用来存放图片对象
     images = []
-    # 循环10次，打开10个jpg图片
+    # 循环total次，打开total个jpg图片
     for i in range(total):
         # 打开第i个图片，f字符串可以插入变量
         image = Image.open(f"./img/{i}.jpg")
