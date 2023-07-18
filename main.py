@@ -3,7 +3,11 @@ import keyboard
 import os
 import shutil
 from PIL import ImageGrab, Image
+
+
 distPath = "./img/"
+print("按下D键进行全屏截图")
+print("按下O键把截图组装成PDF")
 if os.path.exists(distPath):
     print("img存在，清空img文件夹")
     shutil.rmtree("img")
@@ -17,15 +21,17 @@ width = win.winfo_screenwidth()
 height = win.winfo_screenheight()
 total = 0
 
+
 def print_screen():
     global total
     global distPath
     img = ImageGrab.grab(bbox=(0, 0, width, height))
     # 保存截图i
-    filename = distPath+str(total) + ".jpg"
-    total+=1
+    filename = distPath + str(total) + ".jpg"
+    total += 1
     img.save(filename)
     print("截图文件保存到：" + filename)
+
 
 def package_img():
     print("正在组装pdf")
@@ -45,7 +51,8 @@ def package_img():
     pdf_path = "output.pdf"
     # 把列表中的图片对象合并输出为一个pdf文件
     images[0].save(pdf_path, "PDF", resolution=100.0, save_all=True, append_images=images[1:])
-    print("组装完成，pdf："+pdf_path)
+    print("组装完成，pdf位置" + pdf_path)
+
 
 if __name__ == '__main__':
     keyboard.add_hotkey('d', print_screen)
